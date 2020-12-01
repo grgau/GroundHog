@@ -39,3 +39,6 @@ nosetests.xml
 *.npz
 *.npy
 *.pkl
+
+# MACOS files
+*.DS_Store
