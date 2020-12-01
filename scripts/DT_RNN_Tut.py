@@ -29,6 +29,7 @@ from groundhog.layers import maxpool, \
         hard_tanh
 from groundhog.models import LM_Model
 from theano.sandbox.scan import scan
+# from theano.scan_module import scan
 
 import numpy
 import theano
@@ -234,7 +235,7 @@ def jobman(state, channel):
 
     ##### scan for iterating the single-step sampling multiple times
     [samples, summaries], updates = scan(sample_fn,
-                      states = [
+                      outputs_info = [
                           TT.alloc(numpy.int64(0), state['sample_steps']),
                           TT.alloc(numpy.float32(0), 1, eval(state['nhids'])[-1])],
                       n_steps= state['sample_steps'],
@@ -298,8 +299,8 @@ if __name__=='__main__':
     state = {}
     # complete path to data (cluster specific)
     state['seqlen'] = 100
-    state['path']= "/data/lisa/data/PennTreebankCorpus/pentree_char_and_word.npz"
-    state['dictionary']= "/data/lisa/data/PennTreebankCorpus/dictionaries.npz"
+    state['path']= "/home/pedroferracini/GroundHog/scripts/input_chars.npz"
+    state['dictionary']= "/home/pedroferracini/GroundHog/scripts/input_chars_dict.npz"
     state['chunks'] = 'chars'
     state['seed'] = 123
 

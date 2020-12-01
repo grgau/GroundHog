@@ -29,7 +29,8 @@ from groundhog.layers import maxpool, \
         hard_sigmoid, \
         hard_tanh
 from groundhog.models import LM_Model
-from theano.sandbox.scan import scan
+# from theano.sandbox.scan import scan
+from theano.scan_module import scan
 
 import numpy
 import theano
@@ -353,8 +354,8 @@ if __name__=='__main__':
     state = {}
     # complete path to data (cluster specific)
     state['seqlen'] = 100
-    state['path']= "/data/lisa/data/PennTreebankCorpus/pentree_char_and_word.npz"
-    state['dictionary']= "/data/lisa/data/PennTreebankCorpus/dictionaries.npz"
+    state['path']= "/home/pedroferracini/GroundHog/scripts/input_chars.npz"
+    state['dictionary']= "/home/pedroferracini/GroundHog/scripts/input_chars_dict.npz"
     state['chunks'] = 'chars'
     state['seed'] = 123
 
