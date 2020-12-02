@@ -235,7 +235,7 @@ def jobman(state, channel):
 
     ##### scan for iterating the single-step sampling multiple times
     [samples, summaries], updates = scan(sample_fn,
-                      outputs_info = [
+                      states = [
                           TT.alloc(numpy.int64(0), state['sample_steps']),
                           TT.alloc(numpy.float32(0), 1, eval(state['nhids'])[-1])],
                       n_steps= state['sample_steps'],
